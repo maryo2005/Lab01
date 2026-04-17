@@ -1,5 +1,7 @@
-FROM httpd:alpine
+FROM nginx:alpine
 
-COPY index.html /usr/local/apache2/htdocs/
+COPY . /usr/share/nginx/html
 
 EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

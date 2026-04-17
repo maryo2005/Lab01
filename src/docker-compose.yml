@@ -1,14 +1,40 @@
-version: "3.8"
+version: '3.8'
 
 services:
+  # Servicio Frontend
   web01:
-    build: ./web01
-    container_name: web01
-    ports:
-      - "4000:80"
-
-  web02:
-    build: ./web02
-    container_name: web02
+    build: ./src/web/web01
+    container_name: web-localhost-01
     ports:
       - "4001:80"
+    networks:
+      - lab_network
+
+  # Servicio Backend
+  api01:
+    build: ./src/api
+    container_name: api-localhost-01
+    ports:
+      - "4002:3000"
+    environment:
+      - DB_HOST=db01
+    depends_on:
+      - db01
+    networks:
+      - lab_network
+
+  # Servicio Base de Datos
+  db01:
+    image: postgres:latest
+    container_name: db-localhost-01
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=app_db
+    ports:
+      - "4003:5432"
+    networks:
+      - lab_network
+
+networks:
+  lab_network:
+    driver: bridge
