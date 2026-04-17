@@ -4,13 +4,22 @@ Bienvenidos a iac, el dia de hoy quiero desplegar mi pagina web con el contenido
 Quiero desplegar mi contenido en 1 servidor web en el puerto 8080
 
 
+cd c:\Users\maryo\OneDrive\Escritorio\TRABAJOS_UPAO\Infra\Lab01\src
+
+# Construir imagen del API
+docker build -t lab/api ./api
+
+# Construir imagen de web01
+docker build -t lab/web ./web/web01
+
+# Luego usar docker-compose para orquestar todo
+docker-compose up -d
 
 
-docker build -t web01_01 .
-docker run -d -p 4000:80 --name web01_01 web01
-docker ps
-
-
-docker build -t web02_02 .
-docker run -d -p 4001:80 --name web01_02 web02
-docker ps
+# Crea los archivos principales de Terraform
+type nul > main.tf
+type nul > variables.tf
+type nul > terraform.tfvars
+type nul > db.tf
+# Crea archivos separados para cada recurso
+touch web.tf api.tf db.tf

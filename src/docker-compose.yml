@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # Servicio Frontend
   web01:
-    build: ./src/web/web01
+    build: ./web/web01
     container_name: web-localhost-01
     ports:
       - "4001:80"
@@ -12,7 +12,7 @@ services:
 
   # Servicio Backend
   api01:
-    build: ./src/api
+    build: ./api
     container_name: api-localhost-01
     ports:
       - "4002:3000"
