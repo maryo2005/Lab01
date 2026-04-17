@@ -25,3 +25,7 @@ type nul > terraform.tfvars
 type nul > web.tf
 type nul > db.tf
 type nul > api.tf
+
+#Creamos los ambientes
+terraform workspace new localhost
+terraform workspace new dev
