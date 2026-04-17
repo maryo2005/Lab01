@@ -20,6 +20,8 @@ docker-compose up -d
 type nul > main.tf
 type nul > variables.tf
 type nul > terraform.tfvars
-type nul > db.tf
+
 # Crea archivos separados para cada recurso
-touch web.tf api.tf db.tf
+type nul > web.tf
+type nul > db.tf
+type nul > api.tf
